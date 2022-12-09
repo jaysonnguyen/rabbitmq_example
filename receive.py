@@ -1,14 +1,16 @@
 import pika, sys, os, time
 
 def main():
-    credentials = pika.PlainCredentials('quinv', 'quinv')
-    parameters = pika.ConnectionParameters(
-        '34.125.237.190',
-        5672,
-        '/',
-        credentials
-    )
-    connection = pika.BlockingConnection(parameters)
+    # credentials = pika.PlainCredentials('quinv', 'quinv')
+    # parameters = pika.ConnectionParameters(
+    #     '34.125.237.190',
+    #     5672,
+    #     '/',
+    #     credentials
+    # )
+    parameters = pika.URLParameters('amqp://quinv:quinv@localhost:5672/%2F')
+    # connection = pika.BlockingConnection(parameters)
+    connection = pika.SelectConnection(parameters=parameters)
 
     # connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
