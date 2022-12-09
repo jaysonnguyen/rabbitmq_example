@@ -1,7 +1,7 @@
 import pika, sys, os, time
 
 def main():
-    credentials = pika.PlainCredentials('guest', 'guest')
+    credentials = pika.PlainCredentials('quinv', 'quinv')
     parameters = pika.ConnectionParameters(
         '34.125.237.190',
         5672,
