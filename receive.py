@@ -9,8 +9,8 @@ def main():
     #     credentials
     # )
     parameters = pika.URLParameters('amqp://quinv:quinv@localhost:5672/%2F')
-    # connection = pika.BlockingConnection(parameters)
-    connection = pika.SelectConnection(parameters=parameters)
+    connection = pika.BlockingConnection(parameters)
+    # connection = pika.SelectConnection(parameters=parameters)
 
     # connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
