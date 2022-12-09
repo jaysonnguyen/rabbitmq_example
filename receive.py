@@ -1,7 +1,16 @@
 import pika, sys, os, time
 
 def main():
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='34.125.237.190'))
+    credentials = pika.PlainCredentials('guest', 'guest')
+    parameters = pika.ConnectionParameters(
+        '34.125.237.190',
+        5672,
+        '/',
+        credentials
+    )
+    connection = pika.BlockingConnection(parameters)
+
+    # connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
 
     channel.queue_declare(queue='hello')
